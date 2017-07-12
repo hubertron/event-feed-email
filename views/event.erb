@@ -1,50 +1,58 @@
 <html>
 
 <head>
-  <title>Inntopia Active Packages</title>
+  <title>Winter Park Upcoming Events</title>
 
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
 <body>
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col s12 m4">  
+      <div class="card medium">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= event['Title'] %><i class="material-icons right">more_vert</i></span>
+          <p><%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M:%S %p')  %></p>
+        </div>
+        <div class="card-action">
+              <a href="https://www.winterparkresort.com<%=  event['EventLink'] %>">Learn More</a>
+            </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><%= event['Title'] %><i class="material-icons right">close</i></span>
+          <p><%=  event['Description'] %></p>
+        </div>
+    </div>
+    </div>
+    <% end %>
+    </div>
 
-
-
-  <div class="site-wrap">
-    <h2>Currently Active Packages at <span><%= @resortTitle %></span></h1>
-
-      <table class="pure-table pure-table-bordered pure-table-striped">
-        <tr>
-          <thead>
-            <th>Event Name</th>
-            <th>Event Start Date</th>
-            <th>Event Description </th>
-            <th>Event Link</th>
-            <th>Image</th>
-          </thead>
-        </tr>
+      <!--
         <% @events.each do |event| %>
-          <tr>
-            <td>
-              <%= event['Title']   %>
-            </td>
-            <td>
-              <%= DateTime.parse(event['StartDate']).strftime('%A %I:%M:%S %p')  %>
-            </td>
-            <td>
+          
+              <%= event['Title'] %>
+            
+              <%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M:%S %p')  %>
+            
               <%=  event['Description'] %>
-            </td>
-            <td><a href="<%=  event['EventLink'] %>">Learn More</a> </td>
-            <td><img src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300"> </td>
-          </tr>
+            <a href="https://www.winterparkresort.com<%=  event['EventLink'] %>">Learn More</a><img src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300"> </td>
+         
           <% end %>
-      </table>
-  </div>
-
+  
+-->
 
 </body>
 
