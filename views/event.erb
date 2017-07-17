@@ -24,8 +24,14 @@
       text-decoration: underline;
     }
 
-    .card .card-title {
+    .card .card-content .card-title {
       font-size: 22px !important;
+      margin-bottom: 5px !important;
+      line-height: 22px !important;
+    }
+
+    body {
+      width: 600px;
     }
     
 
@@ -36,10 +42,10 @@
 <body>
 
     <div class="row">
-      <% 3.times do |index|  %>
+      <% 2.times do |index|  %>
         <% event = @events[index] %>
-          <div class="col s12 m4">
-            <div class="card medium">
+          <div class="col s12 m6">
+            <div class="card small">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300">
               </div>
