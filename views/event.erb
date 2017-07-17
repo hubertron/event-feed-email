@@ -6,12 +6,8 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style type="text/css">
@@ -33,7 +29,10 @@
     body {
       width: 600px;
     }
-    
+  
+    .wide600 {
+      width: 600px;
+    }
 
   </style>
 
@@ -41,7 +40,7 @@
 
 <body>
 
-    <div class="row">
+    <div class="wide-600 row">
       <% 2.times do |index|  %>
         <% event = @events[index] %>
           <div class="col s12 m6">
@@ -50,7 +49,7 @@
                 <img class="activator" src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300">
               </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4"><%= event['Title'] %><i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4"><%= event['Title'] %></span>
                 <p>
                   <%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M:%S %p')  %>
                 </p>
@@ -58,12 +57,7 @@
               <div class="card-action">
                 <a href="https://www.winterparkresort.com<%=  event['EventLink'] %>">Learn More &gt;</a>
               </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4"><%= event['Title'] %><i class="material-icons right">close</i></span>
-                <p>
-                  <%=  event['Description'] %>
-                </p>
-              </div>
+      
             </div>
           </div>
           <% end %>
