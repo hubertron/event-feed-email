@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title><%= @resortTitle %></title>
+
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style type="text/css">
+    a {
+      color: #98002e !important;
+      font-weight: bold;
+    }
+    a:hover, a:active {
+      color: #98002e !important;
+      text-decoration: underline;
+    }
+
+    .card .card-content .card-title {
+      font-size: 22px !important;
+      margin-bottom: 5px !important;
+      line-height: 22px !important;
+    }
+
+    body {
+      width: 600px;
+    }
+  
+    .wide600 {
+      width: 600px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+<%= @data['name'] %> <br />
+<%= @data['reviews_count'] %><br />
+<%= @data['score_description'] %><br />
+<%= (@data['score'].to_f * 5) / 100  %><br />
+
+</body>
+
+</html>

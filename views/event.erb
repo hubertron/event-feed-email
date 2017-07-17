@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Winter Park Upcoming Events</title>
+  <title><%= @resortTitle %></title>
 
 
   <!-- Compiled and minified CSS -->
@@ -46,7 +46,7 @@
           <div class="col s12 m6">
             <div class="card small">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300">
+                <img class="activator" src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="250">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4"><%= event['Title'] %></span>
@@ -63,20 +63,7 @@
           <% end %>
     </div>
 
-  <!--
-    This loops though all in feed   
-    <% @events.each do |event| %>
-          
-              <%= event['Title'] %>
-            
-              <%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M:%S %p')  %>
-            
-              <%=  event['Description'] %>
-            <a href="https://www.winterparkresort.com<%=  event['EventLink'] %>">Learn More</a><img src="https://www.winterparkresort.com<%=  event['ImageLink'] %>" width="300"> </td>
-         
-          <% end %>
-  
--->
+
 
 </body>
 
