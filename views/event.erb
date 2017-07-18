@@ -4,29 +4,17 @@
   <title>
     <%= @resortTitle %>
   </title>
-
-
-
-
-
 </head>
 
 <body>
- <table>
-  <tr>
-    <td class="h30" height="30">&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="center" valign="top">
       <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#efe8da" ;>
         <tbody>
-        
           <tr>
             <td class="w10" width="25">&nbsp;</td>
             <td align="center" valign="top">
-            <% 4.times do |index|  %>
-                <% event = @events[index] %>
+            
               <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                <% 4.times do |index|  %><% event = @events[index] %>
                 <tbody>
                   <tr>
                     <td align="left" valign="top">
@@ -59,16 +47,18 @@
                               </table>
                             </td>
                           </tr>
-                        </tbody>
-                      </table></table>
-                    <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td class="h30" height="30">&nbsp;</td>
-  </tr>
- </table>
-
+                        </tbody>    
+                      </table>
+                    </td>
+                </tbody>
+                <% end %>
+              </table>
+            </td>
+            <td class="w10" width="25">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+ 
 </body>
 
 </html>
