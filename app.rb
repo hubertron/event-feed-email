@@ -4,7 +4,7 @@ require "json"
 require 'date'
 
 
-class MySinatraApp < Sinatra::Base
+class FeedEmbedApp < Sinatra::Base
 
   FCFP_TRUSTID = '39aa8f9d-e5d6-4b73-b8e4-3fff35990d25'
   ZEPHYR_TRUSTID = '43128308-697d-4ac6-be24-4b5b1edfbeec'
@@ -22,21 +22,21 @@ class MySinatraApp < Sinatra::Base
     erb :event  
   end
 
-  get '/lodging/fcfp' do
+  get '/lodging/reviews/fcfp' do
     @data = JSON.parse(RestClient.get TRUSTYOU_URL + FCFP_TRUSTID + TRUST_TYPE)
     @data = @data['response']
     @resortTitle = 'Winter Park Resort'
     erb :reviews  
   end
 
-  get '/lodging/zephyr' do
+  get '/lodging/reviews/zephyr' do
     @data = JSON.parse(RestClient.get TRUSTYOU_URL + ZEPHYR_TRUSTID + TRUST_TYPE)
     @data = @data['response']
     @resortTitle = 'Winter Park Resort'
     erb :reviews  
   end
 
-    get '/lodging/vintage' do
+    get '/lodging/reviews/vintage' do
     @data = JSON.parse(RestClient.get TRUSTYOU_URL + VINTAGE_TRUSTID + TRUST_TYPE)
     @data = @data['response']
     @resortTitle = 'Winter Park Resort'

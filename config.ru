@@ -3,4 +3,4 @@ Bundler.require
 
 require './app'
 
-run MySinatraApp
+run FeedEmbedApp
