@@ -2,9 +2,16 @@ require 'rest-client'
 require "sinatra"
 require "json"
 require 'date'
+require 'sinatra/cache'
+
+set :root, '/'
+set :public, '/public'
+
+set :cache_enabled, true
 
 
 class FeedEmbedApp < Sinatra::Base
+
 
   FCFP_TRUSTID = '39aa8f9d-e5d6-4b73-b8e4-3fff35990d25'
   ZEPHYR_TRUSTID = '43128308-697d-4ac6-be24-4b5b1edfbeec'
