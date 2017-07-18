@@ -1,1 +1,1 @@
-web: ruby config.ru
+web: config.ru
