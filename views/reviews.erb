@@ -1,342 +1,42 @@
 <html>
+
+<head>
+  <title>
+    <%= @resortTitle %>
+  </title>
+
+</head>
+
+<body>
+
+  <!-- ><%= @data['name'] %>-->
+  <span class="value" style="line-height: 1em;position: relative;background: #7cb342;color: #fff;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 3px 0 0;padding: 5px 0 0;font-weight: 500;font-size: 10px;width: 19px;height: 19px;text-align: center;display: inline-block;vertical-align: top;">
+    <%= (@data['score'].to_f * 5) / 100  %>
+  </span>
+
+
+  <span class="score" style="line-height: 14px;color: #505050;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 3px 0 0;font-weight: 500;font-size: 12px;">
+    <%= @data['score_description'] %>
+  </span>
+  
+  <span class="rating-wrapper" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin-top: 0;margin-left: -4px;display: block;">
+    <span class="trustyou-ui rating" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin-top: -5px;display: inline-block;text-align: right;">
+      <span class="rating-units" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 70px;">
+        <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
+        <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
+        <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
+        <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
+        <span class="rating-unit" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: -22px 0;"></span>
+      </span>
+    </span>
     
-    <head>
-      <title>
-        <%= @resortTitle %>
-      </title>
-      <style type="text/css">
-    
-    
-        .trustscore {
-          position: relative;
-          font-size: 14px;
-          font-family: Arial, Helvetica sans-serif
-        }
-    
-        .trustscore p {
-          font-weight: 400;
-          color: #333;
-          margin: 0
-        }
-    
-        .trustscore strong {
-          font-weight: 500
-        }
-    
-        .trustscore:after,
-        .trustscore:before {
-          display: table;
-          clear: both;
-          content: ''
-        }
-    
-        .trustscore * {
-          line-height: 1em
-        }
-    
-        .trustscore .score,
-        .trustscore.size-s .badges .ty-icon {
-          color: #505050
-        }
-    
-        .trustscore .value {
-          position: relative;
-          background: #7cb342;
-          color: #fff
-        }
-    
-        .trustscore .value:after {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          border-style: solid;
-          border-color: #7cb342 transparent transparent #7cb342;
-          content: ''
-        }
-    
-    
-    
-        .trustscore .badges .ty-icon.neg,
-        .trustscore.neg .score {
-          color: #f06748
-        }
-    
-        .trustscore.neg .value {
-          background: #f06748
-        }
-    
-        .trustscore.neg .value:after {
-          border-color: #f06748 transparent transparent #f06748
-        }
-    
-        .trustscore .badges .ty-icon.neu,
-        .trustscore.neu .score {
-          color: #ffa726
-        }
-    
-        .trustscore.neu .value {
-          background: #ffa726
-        }
-    
-        .trustscore.neu .value:after {
-          border-color: #ffa726 transparent transparent #ffa726
-        }
-    
-        .trustscore .badges .ty-icon.pos,
-        .trustscore.pos .score {
-          color: #7cb342
-        }
-    
-        .trustscore.pos .value {
-          background: #7cb342
-        }
-    
-        .trustscore.pos .value:after {
-          border-color: #7cb342 transparent transparent #7cb342
-        }
-    
-        .trustscore.size-m *,
-        .trustscore.size-s *,
-        .trustscore.size-xs * {
-          -moz-box-sizing: border-box;
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box
-        }
-    
-        .trustscore.size-m .value,
-        .trustscore.size-s .value,
-        .trustscore.size-xs .value {
-          margin: 0 5px 0 0;
-          padding: 11px 5px 0;
-          font-weight: 500;
-          font-size: 22px;
-          width: 45px;
-          height: 44px;
-          text-align: center;
-          display: inline-block;
-          vertical-align: top
-        }
-    
-        .trustscore.size-m .value:after,
-        .trustscore.size-s .value:after,
-        .trustscore.size-xs .value:after {
-          border-width: 6px
-        }
-    
-        .trustscore.size-m .score-rating-container,
-        .trustscore.size-s .score-rating-container,
-        .trustscore.size-xs .score-rating-container {
-          display: inline-block;
-          vertical-align: top
-        }
-    
-        .trustscore.size-m .score-wrapper,
-        .trustscore.size-s .score-wrapper,
-        .trustscore.size-xs .score-wrapper {
-          display: inline-block;
-          margin-top: 2px
-        }
-    
-        .trustscore.size-m .score,
-        .trustscore.size-s .score,
-        .trustscore.size-xs .score {
-          margin: 0 2px 0 0;
-          font-weight: 500;
-          font-size: 19px;
-          line-height: 14px;
-        }
-    
-        .trustscore.size-m .badges,
-        .trustscore.size-s .badges,
-        .trustscore.size-xs .badges {
-          font-size: .56em;
-          min-width: 25px
-        }
-    
-        .trustscore.size-m .badges .ty-icon,
-        .trustscore.size-s .badges .ty-icon,
-        .trustscore.size-xs .badges .ty-icon {
-          margin-right: -2px
-        }
-    
-        .trustscore.size-m .rating-wrapper,
-        .trustscore.size-s .rating-wrapper,
-        .trustscore.size-xs .rating-wrapper {
-          margin-top: 0;
-          margin-left: -4px;
-        }
-    
-        .trustscore.size-m .rating .rating-units,
-        .trustscore.size-s .rating .rating-units,
-        .trustscore.size-xs .rating .rating-units {
-          display: inline-block;
-          width: 75px
-        }
-    
-        .trustscore.size-m .rating .rating-unit,
-        .trustscore.size-s .rating .rating-unit,
-        .trustscore.size-xs .rating .rating-unit {
-          display: inline-block;
-          width: 12px;
-          height: 13px;
-          background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;
-          background-size: 36px;
-          margin: 0 0
-        }
-    
-        .trustscore.size-m .rating .rating-unit.is-full,
-        .trustscore.size-s .rating .rating-unit.is-full,
-        .trustscore.size-xs .rating .rating-unit.is-full {
-          background-position: 0 0
-        }
-    
-        .trustscore.size-m .rating .rating-unit.is-half,
-        .trustscore.size-s .rating .rating-unit.is-half,
-        .trustscore.size-xs .rating .rating-unit.is-half {
-          background-position: -12px 0
-        }
-    
-        .trustscore.size-m .rating .rating-score,
-        .trustscore.size-s .rating .rating-score,
-        .trustscore.size-xs .rating .rating-score {
-          display: block;
-          line-height: normal;
-          font-weight: 500;
-          color: #7cb342
-        }
-    
-        .trustscore.size-m .rating .rating-score div,
-        .trustscore.size-m .rating .rating-score span,
-        .trustscore.size-s .rating .rating-score div,
-        .trustscore.size-s .rating .rating-score span,
-        .trustscore.size-xs .rating .rating-score div,
-        .trustscore.size-xs .rating .rating-score span {
-          margin-right: 2px;
-          display: inline-block;
-          font-weight: 500
-        }
-    
-        .trustscore.size-m .counter,
-        .trustscore.size-s .counter,
-        .trustscore.size-xs .counter {
-          color: #999;
-          font-weight: 500;
-          font-size: 11px
-        }
-    
-        .trustscore.size-s .value {
-          width: 33px;
-          height: 32px;
-          padding: 7px 2px 0;
-          font-size: 19px
-        }
-    
-    
-        .trustscore.size-xs .value {
-          margin: 0 3px 0 0;
-          padding: 5px 0 0;
-          font-weight: 500;
-          font-size: 10px;
-          width: 19px;
-          height: 19px
-        }
-    
-        .trustscore.size-xs .value:after {
-          border-width: 2px
-        }
-    
-        .trustscore.size-xs .score-wrapper {
-          margin-top: 0
-        }
-    
-        .trustscore.size-xs .score {
-          font-size: 12px;
-          margin: 0 3px 0 0
-        }
-    
-        .trustscore.size-xs .badges {
-          font-size: .3em
-        }
-    
-        .trustscore.size-xs .badges .ty-icon {
-          margin-right: -1px
-        }
-    
-        .trustscore.size-xs.rating-neg .badges {
-          font-size: .56em;
-          line-height: 12px
-        }
-    
-        .trustscore.size-xs .rating-wrapper {
-          display: block
-        }
-    
-        .trustscore.size-xs .rating-wrapper .rating {
-          margin-top: -5px;
-          display: inline-block;
-          text-align: right;
-        }
-    
-        .trustscore.size-xs .rating-wrapper .rating .rating-units {
-          width: 70px
-        }
-    
-        .trustscore.size-xs .rating-wrapper .rating .rating-units .rating-unit {
-          width: 10px;
-          height: 11px;
-          background-position: -22px 0;
-          background-size: 32px
-        }
-    
-        .trustscore.size-xs .rating-wrapper .rating .rating-units .rating-unit.is-full {
-          background-position: 0 0
-        }
-    
-        .trustscore.size-xs .rating-wrapper .rating .rating-units .rating-unit.is-half {
-          background-position: -11px 0
-        }
-    
-        .trustscore.size-xs .counter {
-          margin-top: -3px;
-          font-size: 9px;
-          line-height: 10px;
-          display: inline-block;
-        }
-      </style>
-    
-    
-    </head>
-    
-    <body>
-      <div class="trustscore size-xs " style="position: relative;font-size: 14px;font-family: Arial, Helvetica sans-serif;">
-        <!-- ><%= @data['name'] %>-->
-        <div class="value" style="line-height: 1em;position: relative;background: #7cb342;color: #fff;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 3px 0 0;padding: 5px 0 0;font-weight: 500;font-size: 10px;width: 19px;height: 19px;text-align: center;display: inline-block;vertical-align: top;">
-          <%= (@data['score'].to_f * 5) / 100  %>
-        </div>
-        <div class="score-rating-container" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;vertical-align: top;">
-          <div class="score-wrapper" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;margin-top: 0;">
-            <div class="score" style="line-height: 14px;color: #505050;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 3px 0 0;font-weight: 500;font-size: 12px;">
-              <%= @data['score_description'] %>
-            </div>
-          </div>
-          <div class="rating-wrapper" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin-top: 0;margin-left: -4px;display: block;">
-            <div class="trustyou-ui rating" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin-top: -5px;display: inline-block;text-align: right;">
-              <div class="rating-units" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 70px;">
-                <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
-                <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
-                <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
-                <span class="rating-unit is-full" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: 0 0;"></span>
-                <span class="rating-unit" style="line-height: 1em;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;width: 10px;height: 11px;background: url(https://event-email.herokuapp.com/icons/sprite-rating-green.png) -24px 0 no-repeat;background-size: 32px;margin: 0 0;background-position: -22px 0;"></span>
-              </div>
-            </div>
-            <div class="counter" style="line-height: 10px;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;color: #999;font-weight: 500;font-size: 9px;margin-top: -3px;display: inline-block;">
-              <%= @data['reviews_count'] %>
-            </div>
-          </div>
-        </div>
-    
-    
-    </div></body>
-    
-    </html>
-    
+    <span class="counter" style="line-height: 10px;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;color: #999;font-weight: 500;font-size: 9px;margin-top: -3px;display: inline-block;">
+      <%= @data['reviews_count'] %>
+      </span>
+    </span>
+
+
+
+</body>
+
+</html>
