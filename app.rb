@@ -2,12 +2,7 @@ require 'rest-client'
 require "sinatra"
 require "json"
 require 'date'
-require 'sinatra/cache'
 
-set :root, '/'
-set :public, '/public'
-
-set :cache_enabled, true
 
 
 class FeedEmbedApp < Sinatra::Base
