@@ -12,7 +12,7 @@
 <body>
 
   <!-- ><%= @data['name'] %>-->
-  <span class="value" style="line-height: 1em;background: #7cb342;color: #fff;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 3px 0 0;padding: 5px 0 0;font-weight: 500;font-size: 10px;width: 19px;height: 19px;text-align: center;display: inline-block;vertical-align: top;">
+  <span class="value" style="line-height: 1em;background: #7cb342;color: #fff;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 3px 0 0;padding: 5px 0 0;font-weight: 500;font-size: 10px;width: 19px;height: 19px;text-align: center;display: inline-block !important;vertical-align: top;">
     <%= (@data['score'].to_f * 5) / 100  %>
   </span>
 
@@ -21,16 +21,15 @@
     <%= @data['score_description'] %>
   </span>
   <br />
-  <span style="margin-top: -5px;">
+  <span style="margin-top: -5px;width:80px">
+    <% 4.times do %>
           <img src="https://event-email.herokuapp.com/icons/sprite-rating-green-full.png" height="10">
-          <img src="https://event-email.herokuapp.com/icons/sprite-rating-green-full.png" height="10">
-          <img src="https://event-email.herokuapp.com/icons/sprite-rating-green-full.png" height="10">
-          <img src="https://event-email.herokuapp.com/icons/sprite-rating-green-full.png" height="10">
+    <% end %>
           <img src="https://event-email.herokuapp.com/icons/sprite-rating-green-none.png" height="10">
       </span>
   </span>
 
-  <span class="counter" style="line-height: 10px;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;color: #999;font-weight: 500;font-size: 9px;margin-top: -3px;display: inline-block;">
+  <span class="counter" style="line-height: 10px;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;color: #999;font-weight: 500;font-size: 9px;margin-top: -3px;display: inline-block !important;">
       <%= @data['reviews_count'] %>
 
 
