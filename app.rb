@@ -29,26 +29,15 @@ class FeedEmbedApp < Sinatra::Base
     erb :event  
   end
 
-  get '/lodging/reviews/fcfp' do
-    @data = JSON.parse(RestClient.get TRUSTYOU_URL + FCFP_TRUSTID + TRUST_TYPE)
+  get '/winterpark/lodging/reviews' do
+    trust_id = params[:trust_id]
+    @data = JSON.parse(RestClient.get TRUSTYOU_URL + trust_id + TRUST_TYPE)
     @data = @data['response']
     @resortTitle = 'Winter Park Resort'
+    @score = (@data['score'].to_f * 5) / 100
     erb :reviews  
   end
 
-  get '/lodging/reviews/zephyr' do
-    @data = JSON.parse(RestClient.get TRUSTYOU_URL + ZEPHYR_TRUSTID + TRUST_TYPE)
-    @data = @data['response']
-    @resortTitle = 'Winter Park Resort'
-    erb :reviews  
-  end
-
-    get '/lodging/reviews/vintage' do
-    @data = JSON.parse(RestClient.get TRUSTYOU_URL + VINTAGE_TRUSTID + TRUST_TYPE)
-    @data = @data['response']
-    @resortTitle = 'Winter Park Resort'
-    erb :reviews  
-  end
 
   get '/' do
     erb :index
