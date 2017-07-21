@@ -4,10 +4,13 @@ require "json"
 require 'date'
 
 
+
+
 class FeedEmbedApp < Sinatra::Base
 
   EVENT_URL = 'https://www.steamboat.com/events/feed'
   TRUSTYOU_URL = 'https://api.trustyou.com/hotels/'
+  LODGING_URL = 'https://www.steamboat.com/shared/Lodgingfeed/get'
 
   TRUST_SEAL = '/seal.json'
 
@@ -25,6 +28,13 @@ class FeedEmbedApp < Sinatra::Base
     @resortTitle = 'Winter Park Resort'
     @score = ((@data['score'].to_f * 5) / 100).round(1)
     erb :reviews  
+  end
+
+  get '/lodging' do
+    @data = JSON.parse(RestClient.get LODGING_URL)
+    @lodging = @data['Lodging'][3]['Lodgings']
+    @resortTitle = 'Winter Park Resort'
+    erb :lodging  
   end
 
 
