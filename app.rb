@@ -2,7 +2,7 @@ require 'rest-client'
 require "sinatra"
 require "json"
 require 'date'
-require 'dotenv/load'
+#require 'dotenv/load'
 
 
 
