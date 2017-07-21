@@ -2,15 +2,15 @@ require 'rest-client'
 require "sinatra"
 require "json"
 require 'date'
-
+require 'dotenv/load'
 
 
 
 class FeedEmbedApp < Sinatra::Base
 
-  EVENT_URL = 'https://www.steamboat.com/events/feed'
-  TRUSTYOU_URL = 'https://api.trustyou.com/hotels/'
-  LODGING_URL = 'https://www.steamboat.com/shared/Lodgingfeed/get'
+  EVENT_URL = ENV['EVENT_URL']
+  TRUSTYOU_URL = ENV['TRUST_YOU']
+  LODGING_URL = ENV['LODGING_URL']
 
   TRUST_SEAL = '/seal.json'
 
@@ -25,7 +25,7 @@ class FeedEmbedApp < Sinatra::Base
     trust_id = params[:trust_id]
     @data = JSON.parse(RestClient.get TRUSTYOU_URL + trust_id + TRUST_SEAL)
     @data = @data['response']
-    @resortTitle = 'Winter Park Resort'
+    @resortTitle = 'Winter Park Resort Reviews ' + @data['name']
     @score = ((@data['score'].to_f * 5) / 100).round(1)
     erb :reviews  
   end
@@ -33,7 +33,7 @@ class FeedEmbedApp < Sinatra::Base
   get '/lodging' do
     @data = JSON.parse(RestClient.get LODGING_URL)
     @lodging = @data['Lodging'][3]['Lodgings']
-    @resortTitle = 'Winter Park Resort'
+    @resortTitle = 'Winter Park Resort Lodging'
     erb :lodging  
   end
 
