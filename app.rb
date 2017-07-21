@@ -2,9 +2,10 @@ require 'rest-client'
 require "sinatra"
 require "json"
 require 'date'
-#require 'dotenv/load'
 
-
+configure :development do
+  require 'dotenv/load'
+end
 
 class FeedEmbedApp < Sinatra::Base
 
