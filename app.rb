@@ -11,7 +11,7 @@ end
 #Scheduled Behavior
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '15m' do
+scheduler.every '5m' do
   EventFeedWriter.new.read_feed
   LodgingFeedWriter.new.read_feed
   puts 'Feed Update Success' 
