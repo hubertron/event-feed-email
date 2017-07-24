@@ -13,14 +13,13 @@ scheduler = Rufus::Scheduler.new
 
 scheduler.every '5m' do
   EventFeedWriter.new.read_feed
-  LodgingFeedWriter.new.read_feed
-  puts 'Feed Update Success' 
-  puts ' '
   print 'Event Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
-  puts ' '
-  print 'Lodging Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
 end
 
+scheduler.every '6m' do
+  LodgingFeedWriter.new.read_feed
+  print 'Lodging Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
+end
 
 EVENT_URL = ENV['EVENT_URL']
 TRUSTYOU_URL = ENV['TRUST_YOU']
