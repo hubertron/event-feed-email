@@ -15,6 +15,10 @@ scheduler.every '1h' do
   EventFeedWriter.new.read_feed
   LodgingFeedWriter.new.read_feed
   puts 'Feed Update Success' 
+  puts ' '
+  print 'Event Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
+  puts ' '
+  print 'Lodging Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
 end
 
 
@@ -26,7 +30,7 @@ TRUST_SEAL = '/seal.json'
 
 
 class EventFeedWriter
-  EVENT_FILE_LOC = 'event-feed.json'
+  EVENT_FILE_LOC = 'feeds/event-feed.json'
   
   def read_feed
     event_feed = File.new(EVENT_FILE_LOC, 'w+')
@@ -42,7 +46,7 @@ end
 
 # Not DRY as I expect the future reading methods to diverge in access logic
 class LodgingFeedWriter
-  EVENT_FILE_LOC = 'lodging-feed.json'
+  EVENT_FILE_LOC = 'feeds/lodging-feed.json'
   
   def read_feed
     event_feed = File.new(EVENT_FILE_LOC, 'w+')
@@ -60,7 +64,8 @@ end
 class FeedEmbedApp < Sinatra::Base
   
   # Full Winter Park Event Feed from Sitecore
-  get 'winterpark/events' do
+  get '/events' do
+    resort_id = params[:resort].to_i
     begin
       @data = JSON.parse(
         File.read(
@@ -69,9 +74,10 @@ class FeedEmbedApp < Sinatra::Base
       )
     rescue
       @data = JSON.parse(RestClient.get EVENT_URL)
+      puts "Event Feed Rescued"
     end
 
-    @events = @data['events'][0]['Events']
+    @events = @data['events'][resort_id]
     @resortTitle = 'Winter Park Resort Events'
     erb :event  
   end
@@ -87,6 +93,7 @@ class FeedEmbedApp < Sinatra::Base
       )
     rescue
       @data = JSON.parse(RestClient.get LODGING_URL)
+      puts "Lodging Feed Rescued"
     end
 
     @lodging = @data['Lodging'][3]['Lodgings']
