@@ -9,16 +9,17 @@ configure :development do
 end
 
 #Scheduled Behavior
-scheduler = Rufus::Scheduler.new
+event_scheduler = Rufus::Scheduler.new
+lodging_scheduler = Rufus::Scheduler.new
 
-scheduler.every '5m' do
+event_scheduler.every '5m' do
   EventFeedWriter.new.read_feed
-  print 'Event Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
+  puts 'Event Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
 end
 
-scheduler.every '6m' do
+lodging_scheduler.every '6m' do
   LodgingFeedWriter.new.read_feed
-  print 'Lodging Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
+  puts 'Lodging Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
 end
 
 EVENT_URL = ENV['EVENT_URL']
