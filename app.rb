@@ -28,6 +28,24 @@ LODGING_URL = ENV['LODGING_URL']
 
 TRUST_SEAL = '/seal.json'
 
+RESORT_UNIQUE_ID = Hash[
+  0 => "Winter Park Resort",
+  1 => "Tremblant Resort",
+  2 => "Steamboat Resort",
+  3 => "Snowshoe Resort",
+  4 => "Stratton Mountain",
+  5 => "Blue Mountain" 
+]
+
+RESORT_LODGING_UNIQUE_ID = Hash[
+  0 => "Blue Mountain",
+  1 => "Stratton Mountain",
+  2 => "Steamboat Resort",
+  3 => "Winter Park Resort",
+  4 => "Snowshoe Resort",
+  5 => "Tremblant" 
+]
+ 
 
 class EventFeedWriter
   EVENT_FILE_LOC = 'feeds/event-feed.json'
@@ -78,13 +96,14 @@ class FeedEmbedApp < Sinatra::Base
     end
 
     @events = @data['events'][resort_id]
-    @resortTitle = 'Winter Park Resort Events'
+    @resortTitle = RESORT_UNIQUE_ID[resort_id]
     erb :event  
   end
 
 
   # Full Winter Park Lodging Feed from Sitecore
-  get '/winterpark/lodging' do
+  get '/lodging' do
+    resort_id = params[:resort].to_i
     begin 
       @data = JSON.parse(
         File.read(
@@ -96,20 +115,22 @@ class FeedEmbedApp < Sinatra::Base
       puts "Lodging Feed Rescued"
     end
 
-    @lodging = @data['Lodging'][3]['Lodgings']
-    @resortTitle = 'Winter Park Resort Lodging'
+    @lodging = @data['Lodging'][resort_id]
+    @resortTitle = RESORT_LODGING_UNIQUE_ID[resort_id]
     erb :lodging  
   end
 
 # Reviews from TrustYou, we pay them so I don't might slamming their feed plus their update would likely be better than Heroku's.
 
-  get '/winterpark/lodging/reviews' do
+  get '/lodging/reviews' do
     trust_id = params[:trust_id]
+    resort_id = params[:resort].to_i
     @data = JSON.parse(RestClient.get TRUSTYOU_URL + trust_id + TRUST_SEAL)
     @data = @data['response']
-    @resortTitle = 'Winter Park Resort Reviews -' + @data['name']
+    @resortTitle = RESORT_UNIQUE_ID[resort_id] + ' Reviews -' + @data['name']
     @score = ((@data['score'].to_f * 5) / 100).round(1)
     erb :reviews  
+  
   end
 
   get '/' do

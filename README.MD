@@ -17,3 +17,21 @@ This is a very simple app to parse a feed and display a limited amount of that d
           <% end %>
   
 ```
+
+Event and Trust You `resort` key:
+  * Winter Park = 0 
+  * Tremblant = 1 
+  * Steamboat = 2
+  * Snowshoe = 3 
+  * Stratton = 4
+  * Blue = 5 
+
+
+Lodging `resort` key:
+  * Blue Mountain = 0 
+  * Stratton Mountain = 1 
+  * Steamboat Resort = 2
+  * "Winter Park Resort = 3 
+  * Snowshoe Resort = 4
+  * Tremblant = 5 
+
