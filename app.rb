@@ -12,12 +12,12 @@ end
 event_scheduler = Rufus::Scheduler.new
 lodging_scheduler = Rufus::Scheduler.new
 
-event_scheduler.every '5m' do
+event_scheduler.every '10m' do
   EventFeedWriter.new.read_feed
   puts 'Event Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
 end
 
-lodging_scheduler.every '6m' do
+lodging_scheduler.every '25m' do
   LodgingFeedWriter.new.read_feed
   puts 'Lodging Feed last updated: ', File.mtime(EventFeedWriter::EVENT_FILE_LOC)
 end
