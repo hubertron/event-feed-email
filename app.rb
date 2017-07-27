@@ -136,11 +136,10 @@ class FeedEmbedApp < Sinatra::Base
 
 
   get '/exchange' do
-    cad_price = params[:cad]
-    @usd_rate = JSON.parse(RestClient.get 'https://openexchangerates.org/api/convert/' + cad_price + '/CAD/USD?app_id=' + OPEN_EX_ID )['response'].round(2)
+    cad_price = params[:cad].to_s
+    @usd_rate = JSON.parse(RestClient.get 'https://openexchangerates.org/api/convert/' + cad_price + '/CAD/USD?app_id=' + OPEN_EX_ID )['response'].to_f.round(2)
     time = Time.new
     @time = time.strftime("%B %d, %I:%M %p MT")
-    puts @usd_rate
     erb :exchange
 
 
