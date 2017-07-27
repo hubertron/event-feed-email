@@ -25,6 +25,7 @@ end
 EVENT_URL = ENV['EVENT_URL']
 TRUSTYOU_URL = ENV['TRUST_YOU']
 LODGING_URL = ENV['LODGING_URL']
+OPEN_EX_ID = ENV['OPEN_EX_ID']
 
 TRUST_SEAL = '/seal.json'
 
@@ -133,6 +134,18 @@ class FeedEmbedApp < Sinatra::Base
   
   end
 
+
+  get '/exchange' do
+    cad_price = params[:cad]
+    @usd_rate = JSON.parse(RestClient.get 'https://openexchangerates.org/api/convert/' + cad_price + '/CAD/USD?app_id=' + OPEN_EX_ID )['response'].round(2)
+    time = Time.new
+    @time = time.strftime("%B %d, %I:%M %p MT")
+    puts @usd_rate
+    erb :exchange
+
+
+  
+  end
   get '/' do
     erb :index
   end
