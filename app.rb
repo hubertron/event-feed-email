@@ -131,20 +131,18 @@ class FeedEmbedApp < Sinatra::Base
     @resortTitle = RESORT_UNIQUE_ID[resort_id] + ' Reviews -' + @data['name']
     @score = ((@data['score'].to_f * 5) / 100).round(1)
     erb :reviews  
-  
   end
 
 
+# Simple realtime exchange rate from CAD to USD, I could make it more dynamic in the future
   get '/exchange' do
-    cad_price = params[:cad].to_s
-    @usd_rate = JSON.parse(RestClient.get 'https://openexchangerates.org/api/convert/' + cad_price + '/CAD/USD?app_id=' + OPEN_EX_ID )['response'].to_f.round(2)
+    @cad_price = params[:cad].to_s
+    @usd_rate = JSON.parse(RestClient.get 'https://openexchangerates.org/api/convert/' + @cad_price + '/CAD/USD?app_id=' + OPEN_EX_ID + '&prettyprint=0' )['response'].to_f.round(2)
     time = Time.new
     @time = time.strftime("%B %d, %I:%M %p MT")
     erb :exchange
-
-
-  
   end
+
   get '/' do
     erb :index
   end

@@ -1,9 +1,21 @@
 <html>
   <head>
-    <title>Embeded Email Widgets</title>
+      <title>Exchange Rate Widget</title>
+      
+      <style type="text/css">
+        @font-face {
+          font-family: 'Stag Bold';
+          src: url('fonts/Stag-Semibold.otf');
+        }
+
+      </style>
+
+
   </head>
+
   <body>
-    <span style="font-size: 30px; display:block">$<%= @usd_rate %></span>
+     CA Flag <span style="font-family: 'Stag Bold';font-size: 35px; display:block">$<%= @cad_price %></span>
+    US Flag<span style="font-family: 'Stag Bold';font-size: 35px; display:block">$<%= @usd_rate %></span>
     as of: <%= @time %>
     
   
