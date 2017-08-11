@@ -82,7 +82,7 @@ end
 
 class FeedEmbedApp < Sinatra::Base
   
-  # Full Winter Park Event Feed from Sitecore
+  # Full Event Feed from Sitecore
   get '/events' do
     resort_id = params[:resort].to_i
     begin

@@ -21,7 +21,12 @@
                               <td align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:16px;line-height:22px;color:#5c5e60;font-weight:bold;" valign="top" bgcolor="#eeeeee"><%= event['Title'] %></td>
                             </tr>
                             <tr>
-                              <td align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:14px;line-height:20px; color:#5c5e60;" valign="top" bgcolor="#eeeeee"><%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M %p')  %></td>
+                              <td align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:14px;line-height:20px; color:#5c5e60;" valign="top" bgcolor="#eeeeee">
+                                <% if Date.today.strftime('%Y-%m-%e') == DateTime.parse(event['StartDate']).strftime('%Y-%m-%e') %>
+                                  <%= "<span style='font-weight:bold;color:red'>Today!</span>" %>
+                                <% else %>
+                                  <%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M %p')  %>
+                                <% end %></td>
                             </tr>
                             <tr>
                               <td align="center" valign="top" bgcolor="#eeeeee"><table align="center" border="0" cellpadding="0" cellspacing="0" width="125" >
@@ -29,12 +34,16 @@
                                     <tr>
                                       <td align="center" height="35" style="font-family:Arial, Helvetica, sans-serif; font-size:14px;color:#5c5e60;font-weight:bold; border:2px solid #b4922f; " valign="middle"><a href="https://<%= @events['Site'] %><%=  event['EventLink'] %>" name="fullreport" style="text-decoration:none;display:block;line-height:35px;color:#5c5e60;" target="_blank" xt="SPCLICK">Learn More</a></td>
                                       <td align="center" height="35" style="font-family:Arial, Helvetica, sans-serif; font-size:16px;color:#b4922f;font-weight:bold; border:2px solid #b4922f; background-color:#b4922f;" valign="middle" width="30"><a href="https://www.winterparkresort.com<%=  event['EventLink'] %>" name="fullreport2" style="text-decoration:none;display:block;line-height:35px;color:#5c5e60" target="_blank" xt="SPCLICK">&gt;</a></td>
+                                     
+                                      
+
                                     </tr>
                                   </tbody>
                                 </table></td>
                             </tr>
                           </tbody>
                         </table>
+                        
 
 <% end %>
 
