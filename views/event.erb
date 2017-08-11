@@ -25,8 +25,8 @@
                                 <!-- The following functions looks and compares to see if event is today, if it is, then it shows a callout otherwise it shows the date -->
                                 <% if Date.today.strftime('%Y-%m-%e') == DateTime.parse(event['StartDate']).strftime('%Y-%m-%e') %>
                                   <span style='font-weight:bold;color:#98002e;'>  
-                                  <%= "Today starting at #{DateTime.parse(event['StartDate']).strftime('%I:%M %p')}"  %>
-                                </span>
+                                    <%= "Today, starting at #{DateTime.parse(event['StartDate']).strftime('%I:%M %p')}"  %>
+                                  </span>
                                 <% else %>
                                   <%= DateTime.parse(event['StartDate']).strftime('%A %b %e %I:%M %p')  %>
                                 <% end %></td>
