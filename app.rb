@@ -98,7 +98,11 @@ class FeedEmbedApp < Sinatra::Base
 
     @events = @data['events'][resort_id]
     @resortTitle = RESORT_UNIQUE_ID[resort_id]
-    erb :event  
+    if resort_id == 2
+      erb :event_steamboat
+    else
+     erb :event  
+    end
   end
 
 
